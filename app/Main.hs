@@ -1,4 +1,6 @@
-module Main (main) where
+module Main (main1, main) where
+
+import Data.List (sort)
 
 main1 = do
   contents <- readFile "input-1"
@@ -25,18 +27,25 @@ lander x = scanl (+) 0 (map santa x)
 
 main = do
   contents <- readFile "input-2"
-  print $ sum $ map (presentCalculation . presentNumbers) (lines contents)
+  let dimensions = map splitNumbers $ lines contents
+  print $ sum $ map requiredArea dimensions
+  print $ sum $ map requiredRibbon dimensions
 
-presentNumbers :: String -> [Int]
-presentNumbers x =
+splitNumbers :: String -> [Int]
+splitNumbers x =
   let l = takeWhile (not . (flip elem "x")) x
       remainder1 = drop 1 $ dropWhile (not . (flip elem "x")) x
       w = takeWhile (not . (flip elem "x")) remainder1
       h = drop 1 $ dropWhile (not . (flip elem "x")) remainder1
    in map read [l, w, h]
 
-presentCalculation :: [Int] -> Int
-presentCalculation numbers@[l,w,h] = 
-  let smallest = minimum numbers
-  in
-   2*l*w + 2*w*h + 2*h*l + smallest
+requiredArea :: [Int] -> Int
+requiredArea [l,w,h] =
+  let areas = [l*w, w*h, h*l]
+      smallestArea = minimum areas
+  in 2 * sum areas + smallestArea
+  
+requiredRibbon :: [Int] -> Int
+requiredRibbon dimensions = 
+  let twoSmallestDimensions = take 2 $ sort dimensions
+  in 2 * sum twoSmallestDimensions + product dimensions
