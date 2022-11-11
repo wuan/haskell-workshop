@@ -25,7 +25,8 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Day1
+      Day2
   other-modules:
       Paths_haskell_workshop
   hs-source-dirs:
