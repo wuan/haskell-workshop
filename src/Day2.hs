@@ -1,4 +1,4 @@
-module Day2 (day2) where
+module Day2 where
 
 import Data.List (sort)
 
@@ -18,13 +18,12 @@ splitNumbers x =
    in map read [l, w, h]
 
 requiredArea :: [Int] -> Int
-requiredArea [l,w,h] =
-  let areas = [l*w, w*h, h*l]
+requiredArea [l, w, h] =
+  let areas = [l * w, w * h, h * l]
       smallestArea = minimum areas
-  in 2 * sum areas + smallestArea
+   in 2 * sum areas + smallestArea
 
 requiredRibbon :: [Int] -> Int
 requiredRibbon dimensions =
   let twoSmallestDimensions = take 2 $ sort dimensions
-  in 2 * sum twoSmallestDimensions + product dimensions
-
+   in 2 * sum twoSmallestDimensions + product dimensions
