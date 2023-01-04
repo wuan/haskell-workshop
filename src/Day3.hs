@@ -33,6 +33,7 @@ step 'v' (x, y) = (x, y -1)
 step '^' (x, y) = (x, y + 1)
 step x y = error ("step got bad input " <> show x <> " " <> show y)
 
+-- taken from DSP.Basic
 uninterleave :: [a] -> ([a],[a])
 -- tilde is an irrefutible pattern match
 uninterleave = foldr (\x ~(xs,ys) -> (x:ys,xs)) ([],[])
