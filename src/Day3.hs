@@ -14,10 +14,10 @@ day3 = do
   print $ length $ nub coordinates'
 
 
--- new name for Int
+-- new name for Int (a type alias)
 type Number = Int
 
--- wraps an existing type
+-- wraps an existing type (cannot used in places where the wrapped type is required)
 newtype MyNumber = MyNumber Int
 
 type Coordinate = (Int, Int)
