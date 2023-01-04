@@ -28,10 +28,4 @@ requiredRibbon dimensions =
   let twoSmallestDimensions = take 2 $ sort dimensions
    in 2 * sum twoSmallestDimensions + product dimensions
 
-data Week = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday deriving (Eq, Ord, Enum, Show)
-
---instance Enum Week where
---  toEnum index = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday] !! index
---  fromEnum enum = ord enum
-  
   
