@@ -2,7 +2,6 @@ module Day3 where
 
 import Data.List
 
-
 day3 :: IO ()
 day3 = do
   contents <- readFile "input-3"
@@ -12,7 +11,6 @@ day3 = do
   let (santa, robo) = uninterleave contents
   let coordinates' = visited santa <> visited robo
   print $ length $ nub coordinates'
-
 
 -- new name for Int (a type alias)
 type Number = Int
@@ -34,6 +32,6 @@ step '^' (x, y) = (x, y + 1)
 step x y = error ("step got bad input " <> show x <> " " <> show y)
 
 -- taken from DSP.Basic
-uninterleave :: [a] -> ([a],[a])
+uninterleave :: [a] -> ([a], [a])
 -- tilde is an irrefutible pattern match
-uninterleave = foldr (\x ~(xs,ys) -> (x:ys,xs)) ([],[])
+uninterleave = foldr (\x ~(xs, ys) -> (x : ys, xs)) ([], [])
