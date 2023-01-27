@@ -24,6 +24,10 @@ dependencies:
 - hspec
 - hspec-expectations
 - QuickCheck
+- cryptohash-md5
+- bytestring
+- text
+- base16-bytestring
 
 ghc-options:
 - -Wall

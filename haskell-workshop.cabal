@@ -1,72 +1,99 @@
-cabal-version: 1.12
+cabal-version:      1.12
 
--- This file has been generated from package.yaml by hpack version 0.35.0.
+-- This file has been generated from package.yaml by hpack version 0.35.1.
 --
 -- see: https://github.com/sol/hpack
 
-name:           haskell-workshop
-version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/haskell-workshop#readme>
-homepage:       https://github.com/githubuser/haskell-workshop#readme
-bug-reports:    https://github.com/githubuser/haskell-workshop/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2022 Author name here
-license:        BSD3
-license-file:   LICENSE
-build-type:     Simple
+name:               haskell-workshop
+version:            0.1.0.0
+description:
+  Please see the README on GitHub at <https://github.com/githubuser/haskell-workshop#readme>
+
+homepage:           https://github.com/githubuser/haskell-workshop#readme
+bug-reports:        https://github.com/githubuser/haskell-workshop/issues
+author:             Author name here
+maintainer:         example@example.com
+copyright:          2022 Author name here
+license:            BSD3
+license-file:       LICENSE
+build-type:         Simple
 extra-source-files:
-    README.md
-    CHANGELOG.md
+  CHANGELOG.md
+  README.md
 
 source-repository head
-  type: git
+  type:     git
   location: https://github.com/githubuser/haskell-workshop
 
 library
   exposed-modules:
-      Day1
-      Day2
-      Day3
-  other-modules:
-      Paths_haskell_workshop
-  hs-source-dirs:
-      src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+    Day1
+    Day2
+    Day3
+    Day4
+
+  other-modules:    Paths_haskell_workshop
+  hs-source-dirs:   src
+  ghc-options:
+    -Wall -Wcompat -Widentities -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wmissing-export-lists
+    -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+
   build-depends:
-      QuickCheck
-    , base >=4.7 && <5
+      base                >=4.7 && <5
+    , base16-bytestring
+    , bytestring
+    , cryptohash-md5
     , hspec
     , hspec-expectations
+    , QuickCheck
+    , text
+
   default-language: Haskell2010
 
 executable haskell-workshop-exe
-  main-is: Main.hs
-  other-modules:
-      Paths_haskell_workshop
-  hs-source-dirs:
-      app
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  main-is:          Main.hs
+  other-modules:    Paths_haskell_workshop
+  hs-source-dirs:   app
+  ghc-options:
+    -Wall -Wcompat -Widentities -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wmissing-export-lists
+    -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+    -threaded -rtsopts -with-rtsopts=-N
+
   build-depends:
-      QuickCheck
-    , base >=4.7 && <5
+      base                >=4.7 && <5
+    , base16-bytestring
+    , bytestring
+    , cryptohash-md5
     , haskell-workshop
     , hspec
     , hspec-expectations
+    , QuickCheck
+    , text
+
   default-language: Haskell2010
 
 test-suite haskell-workshop-test
-  type: exitcode-stdio-1.0
-  main-is: Spec.hs
-  other-modules:
-      Paths_haskell_workshop
-  hs-source-dirs:
-      test
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  type:             exitcode-stdio-1.0
+  main-is:          Spec.hs
+  other-modules:    Paths_haskell_workshop
+  hs-source-dirs:   test
+  ghc-options:
+    -Wall -Wcompat -Widentities -Wincomplete-record-updates
+    -Wincomplete-uni-patterns -Wmissing-export-lists
+    -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+    -threaded -rtsopts -with-rtsopts=-N
+
   build-depends:
-      QuickCheck
-    , base >=4.7 && <5
+      base                >=4.7 && <5
+    , base16-bytestring
+    , bytestring
+    , cryptohash-md5
     , haskell-workshop
     , hspec
     , hspec-expectations
+    , QuickCheck
+    , text
+
   default-language: Haskell2010
