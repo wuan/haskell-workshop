@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Day4 (day4, input4, buildSource, hashText) where
+module Day4 (day4) where
 
 ----- Day 4: The Ideal Stocking Stuffer ---
 --Santa needs help mining some AdventCoins (very similar to bitcoins) to use as gifts for all the economically forward-thinking little girls and boys.
@@ -46,5 +46,6 @@ firstMatch prefix input =
 
 day4 :: IO ()
 day4 = do
+    print "day 4:"
     print (firstMatch "00000" input4)
     print (firstMatch "000000" input4)

@@ -1,10 +1,11 @@
 module Day1 (day1) where
- 
+
 day1 :: IO ()
 day1 = do
-  contents <- readFile "input-1"
-  print $ whichFloor contents
-  print $ part2 $ lander contents
+    contents <- readFile "input-1"
+    print "day 1:"
+    print $ whichFloor contents
+    print $ part2 $ lander contents
 
 --santa [] = 0
 --santa ('(':xs) = 1 + santa xs
