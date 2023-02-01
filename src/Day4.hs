@@ -12,6 +12,8 @@ import qualified Data.Text.Encoding as DTextEncoding
 
 type Text = DText.Text
 
+newtype Hash = Hash {getText :: Text} deriving (Eq, Show)
+
 input4 :: Text
 input4 = "ckczppom"
 
@@ -19,18 +21,18 @@ encodeHex :: Char8.ByteString -> Text
 encodeHex input =
     DTextEncoding.decodeUtf8 (Base16.encode input)
 
-hashText :: Text -> Text
+hashText :: Text -> Hash
 hashText input =
-    encodeHex $ MD5.hash $ DTextEncoding.encodeUtf8 input
+    Hash $ encodeHex $ MD5.hash $ DTextEncoding.encodeUtf8 input
 
 buildSource :: Text -> Int -> (Text, Int)
 buildSource input number = (input <> DText.pack (show number), number)
 
-firstMatch :: Text -> Text -> (Text, Int)
+firstMatch :: Text -> Text -> (Hash, Int)
 firstMatch prefix input =
     head $
         take 1 $
-            filter ((prefix `DText.isPrefixOf`) . fst) $
+            filter ((prefix `DText.isPrefixOf`) . getText . fst) $
                 map (BiFunc.first hashText . buildSource input) [1 ..]
 
 day4 :: IO ()
