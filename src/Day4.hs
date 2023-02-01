@@ -21,9 +21,9 @@ encodeHex :: Char8.ByteString -> Text
 encodeHex input =
     DTextEncoding.decodeUtf8 (Base16.encode input)
 
+-- eta (η) reducted version of hashText
 hashText :: Text -> Hash
-hashText input =
-    Hash $ encodeHex $ MD5.hash $ DTextEncoding.encodeUtf8 input
+hashText = Hash . encodeHex . MD5.hash . DTextEncoding.encodeUtf8
 
 buildSource :: Text -> Int -> (Text, Int)
 buildSource input number = (input <> DText.pack (show number), number)
@@ -33,7 +33,7 @@ firstMatch prefix input =
     head $
         take 1 $
             filter ((prefix `DText.isPrefixOf`) . getText . fst) $
-                map (BiFunc.first hashText . buildSource input) [1 ..]
+                BiFunc.first hashText . buildSource input <$> [1 ..]
 
 day4 :: IO ()
 day4 = do
